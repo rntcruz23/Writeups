@@ -10,6 +10,10 @@
 
 *Note: This could be confirmed by telnet*
 
-3. Port 6000 metions Rick's half baked shell:
+3. Port 6000 metions Rick's half baked shell, using netcat to connect to it gives a simple shell to get next flag:
 
 ![baked shell](half_baked_shell.png)
+
+4. Visiting the website on port 80 doesn't show anything relevant... But inspection of HTML gives a password:
+
+![html](html.png)
