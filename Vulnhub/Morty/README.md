@@ -26,3 +26,9 @@
  6. Starting wih the tracertool.cgi:
  
  ![tracertool](tracert.png)
+ 
+This can be vulnurable to injection attacks if the input is not properly sanitized. Inserting a ; and adding abritary commands, executes it. 
+First thing, read /etc/passwd to get users with input *; more /etc/passwd* (cat is disabled, the binary is changed to print a cat): 
+
+![passwd](passwd.png)
+
