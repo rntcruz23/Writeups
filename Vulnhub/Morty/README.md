@@ -56,3 +56,15 @@ First thing, read /etc/passwd to get users with input *; more /etc/passwd* (cat 
 The *safe* tells us to use command line arguments, and passing the previous 131333 gives a new flag and Rick's hint for his password:
 
 ![hints](safe.png)
+
+11. Ricks hints for his password: 1 upper case, 1 number, 1 word from his old band (The Flesh Curtains)
+Writin a Python script to generate all possible passwords, and running an automated online password cracking tool such as Hydra gives Ricks password:
+ 
+ ![hydra](hydra.png)
+ 
+ 12. Rick has full sudo permissions, so we can just read the remaining flag, or get root shell:
+ 
+ ![root](root.png)
+ ![flag](last_flag.png)
+ 
+ 
