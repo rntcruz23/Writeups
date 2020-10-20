@@ -32,3 +32,13 @@ First thing, read /etc/passwd to get users with input *; more /etc/passwd* (cat 
 
 ![passwd](passwd.png)
 
+4 relevant users: root, RickSanches, Summer, Morty.
+
+7. Before moving on, visiting port 9090 gives another flag:
+
+![web_9090](web_9090.png)
+
+8. Now trying FTP port 21, asks for authentication (no anonymous login). Previously we found a password *winter*, which might be Summer's password.
+
+![ftp](ftp.png)
+![ftp_flag](ftp_flag.png)
