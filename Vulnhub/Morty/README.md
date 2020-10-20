@@ -47,4 +47,7 @@ First thing, read /etc/passwd to get users with input *; more /etc/passwd* (cat 
  * Safe_Password.jpg
  * journal.txt.zip
  Running strings on the image file gives the zip password:
- ![strings](strings.jpg)
+ ![strings](strings.png)
+ 
+ Extracting the journal.txt.zip file gives a journal.txt with a new flag:
+ ![journal](journal.png)
