@@ -42,3 +42,9 @@ First thing, read /etc/passwd to get users with input *; more /etc/passwd* (cat 
 
 ![ftp](ftp.png)
 ![ftp_flag](ftp_flag.png)
+
+9. The same credentials can be used to ssh with Summer. By browsing around, Morty's home folder has 2 interesting files:
+ * Safe_Password.jpg
+ * journal.txt.zip
+ Running strings on the image file gives the zip password:
+ ![strings](strings.jpg)
