@@ -17,3 +17,12 @@
 4. Visiting the website on port 80 doesn't show anything relevant... But inspection of HTML gives a password:
 
 ![html](html.png)
+
+5. Robots.txt has 3 entries:
+  * /cgi-bin/root_shell.cgi
+  * /cgi-bin/tracertool.cgi
+  * /cgi-bin/*
+ 
+ 6. Starting wih the tracertool.cgi:
+ 
+ ![tracertool](tracert.png)
