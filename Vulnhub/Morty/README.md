@@ -23,7 +23,7 @@
   * /cgi-bin/tracertool.cgi
   * /cgi-bin/*
  
- 6. Starting wih the tracertool.cgi:
+6. Starting wih the tracertool.cgi:
  
  ![tracertool](tracert.png)
  
@@ -32,18 +32,22 @@ First thing, read /etc/passwd to get users with input *; more /etc/passwd* (cat 
 
 ![passwd](passwd.png)
 
-4 relevant users: root, RickSanches, Summer, Morty.
+ 4 relevant users: root, RickSanches, Summer, Morty.
 
 7. Before moving on, visiting port 9090 gives another flag:
 
 ![web_9090](web_9090.png)
 
-8. Now trying FTP port 21, asks for authentication (no anonymous login). Previously we found a password *winter*, which might be Summer's password.
+8. A dirbuster also finds a *passwords* directory with a new flag:
+
+![pass](passwords.png)
+
+9. Now trying FTP port 21, asks for authentication (no anonymous login). Previously we found a password *winter*, which might be Summer's password.
 
 ![ftp](ftp.png)
 ![ftp_flag](ftp_flag.png)
 
-9. The same credentials can be used to ssh with Summer. By browsing around, Morty's home folder has 2 interesting files:
+10. The same credentials can be used to ssh with Summer. By browsing around, Morty's home folder has 2 interesting files:
  * Safe_Password.jpg
  * journal.txt.zip
  Running strings on the image file gives the zip password:
@@ -52,17 +56,17 @@ First thing, read /etc/passwd to get users with input *; more /etc/passwd* (cat 
  Extracting the journal.txt.zip file gives a journal.txt with a new flag:
  ![journal](journal.png)
 
-10. Rick's home folder has a binary *safe* which we don't have permissions to execute, but we can copy it, and change the permissions of the copy. 
+11. Rick's home folder has a binary *safe* which we don't have permissions to execute, but we can copy it, and change the permissions of the copy. 
 The *safe* tells us to use command line arguments, and passing the previous 131333 gives a new flag and Rick's hint for his password:
 
 ![hints](safe.png)
 
-11. Ricks hints for his password: 1 upper case, 1 number, 1 word from his old band (The Flesh Curtains)
+12. Ricks hints for his password: 1 upper case, 1 number, 1 word from his old band (The Flesh Curtains)
 Writin a Python script to generate all possible passwords, and running an automated online password cracking tool such as Hydra gives Ricks password:
  
  ![hydra](hydra.png)
  
- 12. Rick has full sudo permissions, so we can just read the remaining flag, or get root shell:
+13. Rick has full sudo permissions, so we can just read the remaining flag, or get root shell:
  
  ![root](root.png)
  ![flag](last_flag.png)
