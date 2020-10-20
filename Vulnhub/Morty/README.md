@@ -51,3 +51,8 @@ First thing, read /etc/passwd to get users with input *; more /etc/passwd* (cat 
  
  Extracting the journal.txt.zip file gives a journal.txt with a new flag:
  ![journal](journal.png)
+
+10. Rick's home folder has a binary *safe* which we don't have permissions to execute, but we can copy it, and change the permissions of the copy. 
+The *safe* tells us to use command line arguments, and passing the previous 131333 gives a new flag and Rick's hint for his password:
+
+![hints](safe.png)
