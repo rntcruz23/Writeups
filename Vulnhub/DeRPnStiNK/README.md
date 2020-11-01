@@ -2,11 +2,11 @@
 
 So this is an easy box, but a long one, maybe there is a faster way, but this how I did it.
 
-1. Starting with an `nmap` on all ports (no service detection), with a fast scan (`-T4`)
+1. Starting with an `nmap` on all ports (`-p-`) (no service detection), with a fast scan (`-T4`)
 
 ![nmapall](nmapall.png)
 
-*Note: This was done in our pratical class for CEH, so we we were on a VPN, and everyone was scanning, so there was a bit of garbage, so I did another scan only on the open ports (21,22,80) with service detection*
+*Note: This was done in our pratical class for CEH, so we were on a VPN, and everyone was scanning, so there was a bit of garbage, so I did another scan only on the open ports (21,22,80) with service detection*
 
 ![nmap_sv](nmap_sv.png)
 
@@ -45,9 +45,11 @@ So nothing there...
 6. Without much to go on, I tried the other services
 
 No anonymous login in FTP
+
 ![ftp_anony](ftp_anony.png)
 
 SSH requires public key authentication
+
 ![ssh_no_key](ssh_no_key.png)
 
 So not much to do here yet...
@@ -85,7 +87,7 @@ I also searched in `msfconsole` which has an exploit:
 
 ![metasploit_slsh](metasploit_slideshow.png)
 
-11. Which the exploit running I got a reverse shell
+11. With the exploit running I got a reverse shell
 
 ![shell](metasploit_shell.png)
 
@@ -99,13 +101,14 @@ I also searched in `msfconsole` which has an exploit:
 
 So I got a username:password for the database (root:mysql)
 
-14. Using `mysql` to read from the *mysql* database the *user* table I got unclestinky's password hash, 
+14. Using `mysql` to read from the *mysql* database the *user* table I got unclestinky's password hash.
+
 With [crackstation](crackstation.net) I got unclestincky password: wedgie57
 
 ![unclestinky_hash](unclestinky_hash.png)
 ![unclestinky_crackstation](unclestinky_crackstation.png)
 
-15. As SSH required RSA private key, this passwor was no use, so I tried to login to FTP with the user stinky, which worked!
+15. As SSH (stinky) required RSA private key, this password was useless, so I tried to login to FTP with the user stinky, which worked!
 
 ![ftp_stinky](ftp_stinky.png)
 ![ftp_stinky_ls](ftp_stinky_ls.png)
@@ -115,13 +118,13 @@ With [crackstation](crackstation.net) I got unclestincky password: wedgie57
 ![ftp_nested_ssh](ftp_nested_ssh_folder.png)
 ![key](key.png)
 
-17. The root FTP directory also had a *test.txt* file, and a *derpissues.txt* inside the *network-logs/* folder
+17. The root FTP directory also had a *test.txt* file, and *network-logs/derpissues.txt* file
 
 ![derpissues](derpissues.png)
 
-*test.txt* has nothing, but *derpissues.txt* shows that user mrderp was having problems loging in to wordpress, and that stinky did a packet capture to solve the issue...
+The file *test.txt* has nothing usefull, but *derpissues.txt* shows that user mrderp was having problems logging in to wordpress, and that stinky did a packet capture to solve the issue...
 
-18. Using the private key found in with FTP, I logged into sitnky user
+18. Using the private key found in with FTP, I logged into user stinky
 
 ![ssh_stinky](ssh_stinky.png)
 
@@ -129,7 +132,7 @@ With [crackstation](crackstation.net) I got unclestincky password: wedgie57
 
 ![ls_stinky](ls_stinky.png)
 
-20. I used `wireshark` to analyze the *pcap* file, and has mrderp was having issues loging in, and had to change his password, I filtered the packets in order to show only POST requests, and searched until I found mrderp loging in
+20. I used `wireshark` to analyze the *pcap* file, and as mrderp was having issues logging in, and had to change his password, I filtered the packets in order to show only POST requests, and searched until I found mrderp logging in
 
 ![pcap](pcap_post.png)
 
@@ -149,9 +152,9 @@ So I can run anything in */home/mrderp/binaries/* that beings with *derpy* (I ca
 23. I decided to do a simple `sh` script to get root shell
 
 `
-mkdir /home/mrderp/binaries
-echo "su -" > derpy.sh
-chmod +x derpy.sh
+mkdir /home/mrderp/binaries;
+echo "su -" > derpy.sh;
+chmod +x derpy.sh;
 sudo ./derpy.sh
 `
 
