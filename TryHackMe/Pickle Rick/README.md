@@ -38,10 +38,15 @@ Trying portal.php page redirects back to login.php...
 
 So this web shell is blacklisting some commands.. I also tried other commands to read files (`head`, `tail`, `more`.. ) they were all blacklisted...
 
-8. I tried to enumerate the server a bit using ls
+8. I tried to enumerate the server a bit using `ls -la`
 
+`ls -la`
 ![ls](ls.png)
+
+`ls -la /home`
 ![ls_home](ls_home.png)
+
+`ls -la /home/rick`
 ![ls_rick](ls_rick.png)
 
 9. In the web server directory there is an ingredient and a clue.txt file, so I can access them
